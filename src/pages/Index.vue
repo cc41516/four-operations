@@ -145,7 +145,8 @@ export default {
       if (state.answer.length < state.correctAnswerDigit) {
         state.answer.push(num);
         if (state.answer.length === state.correctAnswerDigit) {
-          setTimeout(submit, 300);
+          let answer = [...state.answer] // to avoid someone press backspace before submit (300ms gap)
+          setTimeout(() => submit(answer), 300);
         }
       }
     };
@@ -168,8 +169,8 @@ export default {
       animate.nextQuestion = false;
     };
 
-    const submit = () => {
-      if (parseInt(state.answer.join("")) !== state.correctAnswer) {
+    const submit = (answer) => {
+      if (parseInt(answer.join("")) !== state.correctAnswer) {
         if (!state.isSubmitted) {
           state.wrongCount++;
         }

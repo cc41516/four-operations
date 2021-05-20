@@ -1,2 +1,2 @@
 web: yarn start
-worker: 
+worker: echo "Stay awake."

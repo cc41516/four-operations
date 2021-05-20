@@ -111,6 +111,7 @@ export default {
     });
 
     const correctSoundEffect = new Audio(require('../assets/correct_01.mp3'))
+    correctSoundEffect.volume = 0.5
 
     watch(
       () => state.timeMode,
